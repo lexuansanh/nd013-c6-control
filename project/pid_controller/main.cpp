@@ -304,9 +304,20 @@ int main ()
           /**
           * TODO (step 3): compute the steer error (error_steer) from the position and the desired trajectory
           **/
+          double dis_min = 10000.0;
+          int close_id = 0;
+
+           for (int i =0; i< x_points.size(); ++i) {
+              double act_dis = pow((x_position - x_points[i]),2) +
+                                pow((y_position - y_points[i]),2);
+              if (act_dis < dis_min) {
+                dis_min = act_dis;
+                close_id = i;
+              }
+            }
           error_steer =
-                angle_between_points(x_position, y_position, x_points[x_points.size() - 1],
-                                        y_points[y_points.size() - 1]) - yaw;
+                angle_between_points(x_position, y_position, x_points[close_id],
+                                        x_points[close_id]) - yaw;
 
           /**
           * TODO (step 3): uncomment these lines
@@ -340,7 +351,7 @@ int main ()
           * TODO (step 2): compute the throttle error (error_throttle) from the position and the desired speed
           **/
           // modify the following line for step 2
-          error_throttle = v_points[v_points.size() - 1] - velocity;
+          error_throttle = v_points[close_id] - velocity;
 
 
 

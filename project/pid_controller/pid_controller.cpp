@@ -27,7 +27,6 @@ void PID::Init(double Kpi, double Kii, double Kdi, double output_lim_maxi, doubl
     p_error = 0.0;
     i_error = 0.0;
     d_error = 0.0;
-    prev_cte = 0.0;
     delta_time = 0;
 }
 
@@ -38,13 +37,10 @@ void PID::UpdateError(double cte) {
    **/
    // Calculate the differential error (error derivative)
    if (delta_time>0) {
-     d_error = (cte - prev_cte) / delta_time;
+     d_error = (cte - p_error) / delta_time;
    } else {
      d_error = 0.0;
    }
-
-   // Update the previous cte
-   prev_cte = cte;
 
    // Update the integral error
    i_error += cte * delta_time;
