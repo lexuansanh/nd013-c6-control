@@ -317,7 +317,7 @@ int main ()
             }
           error_steer =
                 angle_between_points(x_position, y_position, x_points[close_id],
-                                        x_points[close_id]) - yaw;
+                                        y_points[close_id]) - yaw;
 
           /**
           * TODO (step 3): uncomment these lines
