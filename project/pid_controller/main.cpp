@@ -220,7 +220,7 @@ int main ()
   **/
   PID pid_steer = PID();
   double max_steer = 1.2;
-  pid_steer.Init(0.1, 0.01, 0.1, max_steer, -max_steer);
+  pid_steer.Init(0.29, 0.09, 0.1, max_steer, -max_steer);
 
 
   // initialize pid throttle
@@ -230,7 +230,7 @@ int main ()
 
   PID pid_throttle = PID();
   double max_throttle = 1.0;
-  pid_throttle.Init(0.05, 0.1, 0.08, max_throttle, -max_throttle);
+  pid_throttle.Init(0.15, 0.09, 0.1, max_throttle, -max_throttle);
 
   h.onMessage([&pid_steer, &pid_throttle, &new_delta_time, &timer, &prev_timer, &i, &prev_timer](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode)
   {
@@ -304,25 +304,9 @@ int main ()
           /**
           * TODO (step 3): compute the steer error (error_steer) from the position and the desired trajectory
           **/
-//          double dis_min = 10000.0;
-//          int close_id = 0;
-//
-//           for (int i =0; i< x_points.size(); ++i) {
-//              double act_dis = pow((x_position - x_points[i]),2) +
-//                                pow((y_position - y_points[i]),2);
-//              if (act_dis < dis_min) {
-//                dis_min = act_dis;
-//                close_id = i;
-//              }
-//            }
-//          error_steer =
-//                angle_between_points(x_position, y_position, x_points[close_id],
-//                                        y_points[close_id]) - yaw;
-          auto dx = x_points.back() - x_points.front(); // get trajectory difference in x direction
-          auto dy = y_points.back() - y_points.front(); // get trajectory difference in y direction
-          auto desired_yaw = std::atan2(dy, dx); // calculate desired yaw angle
-
-          error_steer = desired_yaw - yaw;
+          error_steer =
+                angle_between_points(x_position, y_position, x_points[x_points.size() - 1],
+                        y_points[y_points.size() - 1]) - yaw;
 
           /**
           * TODO (step 3): uncomment these lines
