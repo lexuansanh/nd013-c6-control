@@ -109,12 +109,12 @@ Once you log into the VM, open a Terminal window.
 Fork the repository to your Github account and clone the repository to the workspace using the commands below. 
 
 ```bash
-git clone https://github.com/udacity/nd013-c6-control-starter.git
+git clone https://github.com/lexuansanh/nd013-c6-control.git
 ```
 
 Change to the project directory.
 ```bash
-cd nd013-c6-control-starter/project
+cd nd013-c6-control/project
 ```
 
 <br/><br/>
@@ -127,7 +127,7 @@ You will find the following files in the project directory.
 ├── cserver_dir
 ├── install-ubuntu.sh
 ├── manual_control.py
-├── pid_controller/     # TODO Files
+├── pid_controller/  
 ├── plot_pid.py
 ├── run_main_pid.sh
 ├── simulatorAPI.py
@@ -148,33 +148,11 @@ This file will, in turn, execute the **/opt/carla-simulator/CarlaUE4.sh** script
 <br/><br/>
 
 ## Step 5. Install Dependencies
-Open another Terminal tab, and change to the **nd013-c6-control-starter/project**  directory. Execute the following shell script to install the project-specific dependencies. 
+Open another Terminal tab, and change to the **nd013-c6-control/project**  directory. Execute the following shell script to install the project-specific dependencies. 
 ```bash
 ./install-ubuntu.sh
 ```
 This file will install utilities such as, `libuv1-dev`, `libssl-dev`, `libz-dev`, `uWebSockets`. 
-
-<br/><br/>
-
-## Step 6. Update the Project Code
-
-Change to the **pid_controller/** directory.
-```bash
-cd pid_controller/
-```
-Before you start coding, we strongly recommend you look at the rubric in your classroom, against which the human Mentor will review your submission. Your submission must satisfy all rubric criteria to pass the project; otherwise, the Mentor may ask you to re-submit. 
-
-
-Update the following files as per the classroom instructions. You will TODO markers as well in these files. 
-
-- **pid_controller.h**
-- **pid_controller.cpp**
-- **main.cpp**
-
-
-<br/>
-
-> **Important**: At this moment, it is important to save your work and push it back to the remote Github repository. 
 
 <br/><br/>
 
@@ -191,7 +169,7 @@ This library is a **msgpack-rpc** library written using modern C++. The goal of 
 
 <br/><br/>
 
-## Step 7. Build and Execute the Project
+## Step 6. Build and Execute the Project
 
 When you finish updating the project files, you can execute the project using the commands below. 
 
@@ -218,9 +196,3 @@ ps -aux | grep carla
 # Use the IDs displayed in the output of the last command. 
 kill id     
 ```
-
-<br/><br/>
-
-## Step 8. Check the Rubric and Submit
-
-Re-check the rubric in the classroom and ensure that your submission satisfies all rubric criteria to pass the project. Once you are confident, submit the project. 
