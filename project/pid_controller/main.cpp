@@ -220,7 +220,8 @@ int main ()
   **/
   PID pid_steer = PID();
   double max_steer = 1.2;
-  pid_steer.Init(0.29, 0.09, 0.1, max_steer, -max_steer);
+  pid_steer.Init(0.3, 0.09, 0.1, max_steer, -max_steer);
+  // pid_steer.Init(0.4, 0.09, 0.1, max_steer, -max_steer);
 
 
   // initialize pid throttle
@@ -230,7 +231,9 @@ int main ()
 
   PID pid_throttle = PID();
   double max_throttle = 1.0;
-  pid_throttle.Init(0.15, 0.09, 0.1, max_throttle, -max_throttle);
+  //pid_throttle.Init(0.05, 0.009, 0.01, max_throttle, -max_throttle);
+  // pid_throttle.Init(0.23, 0.001, 0.02, max_throttle, -max_throttle);
+  pid_throttle.Init(0.13, 0.009, 0.1, max_throttle, -max_throttle);
 
   h.onMessage([&pid_steer, &pid_throttle, &new_delta_time, &timer, &prev_timer, &i, &prev_timer](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode)
   {
@@ -340,7 +343,7 @@ int main ()
           * TODO (step 2): compute the throttle error (error_throttle) from the position and the desired speed
           **/
           // modify the following line for step 2
-          error_throttle = v_points.back() - velocity;
+          error_throttle = v_points[v_points.size() - 1] - velocity;
 
 
 
